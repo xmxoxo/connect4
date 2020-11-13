@@ -1,0 +1,140 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>重力四子棋</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<link rel="stylesheet" type="text/css" href="static/style.css" />
+    <script type="text/javascript" src="static/jquery-2.1.4.min.js"></script>
+<style>
+.txtinfo div{
+}
+
+.txtinfo span{
+	width:10px;
+}
+.sp{float: left; width: 25px;text-align: center;}
+.line{width: 350px;height: 25px;text-align: left;margin-left: 80px;}
+
+</style>
+
+<script language="javascript">
+<!--
+
+function UrlPOST(url,dat, myfun){
+	if (url=="" && dat==""){return "Error parm";}
+	$.ajax({
+		type: "POST",
+		data: dat,
+		url: url,
+		success: function(data){myfun(data);}
+	});
+}
+
+function getid(e){
+	var t_tid = e.attr('id');
+	var tid = t_tid.replace('bt_','');
+	return tid;
+}
+
+
+$(document).ready(function(){
+	var $bt = $("input[id^='bt_']");
+
+	$bt.bind('click',function(e){
+		tid = getid($(this));
+		//alert(tid);
+		if (tid=='n'){
+			if (!confirm("确实要重新开始吗?")){return;}
+			//windows.location.reload();
+			//return;
+		}
+
+		UrlPOST('/nextstep',{'col':tid}, function (dat){
+			if (dat['status']=="OK"){
+				txtinfo = dat['txtinfo'];
+				tline = txtinfo.split("\n");
+				tout = ""
+				for (i=0;i<tline.length;i++ ){
+					if (i>8){
+						tout += "<div class=\"line\">" +  tline[i] + "</div>";
+					}
+					else{
+						tmp = ""
+						for (j=0;j<tline[i].length ;j++ ){
+							tmp += "<div class=\"sp\">" +  tline[i][j] + "</div>";
+						}
+						tout += "<div class=\"line\">" +  tmp + "</div>";
+					}
+				}
+
+				//alert(tout);
+				//alert(txtinfo);
+				//$("#txtinfo")[0].textContent = txtinfo
+				$("#txtinfo")[0].innerHTML = tout; //innerHTML  outerHTML
+				
+				if (tid=='n'){location.reload();}
+			}
+			else{
+				code = dat['code'];
+				if (code==1){alert('本局游戏已结束, 请重新开始！');}
+				if (code==2){alert('下棋错误, 该列已经下不了棋！');}
+			}
+		}); 
+
+	})
+
+});
+
+//-->
+</SCRIPT>
+</head>
+<body>
+
+
+	<div class='box'>
+
+		<div class="box-live" style="width:400px;margin-left:80px;">
+			<div><h1> 重力四子棋 V {{version}}</h1> <hr/>
+			</div>
+			<div class="box-left" style="width:350px; height:350px;margin: 10px 0px 0px 20px;">
+				<div class="txtinfo" id="txtinfo" style="font-family: serif; letter-spacing:2px;font-size: 18px;">{{txtinfo | safe}}</div>
+			</div>
+			
+			<div class="box-center" style="width:350px;height:200px">
+				<form id="frm" method="post" action="/"><input type="hidden" id="col" name="col" value="">
+				<div><hr /><br/>
+					<span>
+					<input type="button" value="1" id="bt_1" />
+					<input type="button" value="2" id="bt_2" />
+					<input type="button" value="3" id="bt_3" />
+					<input type="button" value="4" id="bt_4" />
+					<input type="button" value="5" id="bt_5" />
+					<input type="button" value="6" id="bt_6" />
+					<input type="button" value="重来" id="bt_n" />
+					</span>
+				</div>
+				</form>
+			</div>
+		</div>
+		<div class="box-left" style="float:right;width: 370px;height:200px;margin:120px 20px 0px 0px;text-align:left;/*border: 1px solid #330;*/">
+			<ul><span><B>&nbsp;&nbsp;&nbsp;重力四子棋说明</B><br/></span><br/>
+			<li>重力四子棋共有7行6列；</li><br/>
+			<li>每次只能选择在一个列中下一个棋子；</li><br/>
+			<li>由于重力作用，所下的棋子会下落到该列的最下方；</li><br/>
+			<li>一方棋子在任意直线方向上连成4个棋子即获胜；</li><br/>
+			<li>欢迎加群讨论：BERT模型爱好者  891629665 <br/>
+			<a target="_blank" href="https://qm.qq.com/cgi-bin/qm/qr?k=B0O-Yx7YVnRX_saKYYpm1RGSjKvHigZG&jump_from=webapi"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="BERT模型爱好者" title="BERT模型爱好者"></a>
+			</li><br/>
+			</ul>
+			<p>----------当前比分----------</br>
+				  <span>人类</span>&nbsp;VS&nbsp;<span>AI</span><br/>
+				  {{ score|safe }}<br/>
+			 ------------------------------<br/>
+			<span>{{ score_text }}</span>
+			</p>
+		</div>
+
+	</div>
+</body>
+</html>

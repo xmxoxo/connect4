@@ -1,0 +1,226 @@
+*{margin:0;padding:0;}
+
+/*li{list-style:none outside none;}*/
+
+body{
+	font-family:"宋体";
+	padding:10px 0px 5px 0px;
+}
+
+.box{
+	width:960px;
+	margin:20px auto;
+	height:540px;
+	border:5px solid #000;
+	text-align:center;
+
+	background:#EEEEEE;
+	background-repeat:no-repeat;
+	background-position:center;/*
+	background-image:url('/static/images/bg.jpg');*/
+}
+p{font-size:20px;color:#333;text-align:center;margin:0 0 10px 0px;}
+.box.box-1{height:200px}.box-1 dl{top:25px;}
+.box.box-2{height:500px}.box-2 dl{left:50%;margin-left:-75px;}
+i.hander{display:block;width:100%;height:25px;background:#ccc;text-align:center;font-size:12px;color:#333;line-height:25px;font-style:normal;}
+
+
+.bt{
+	width:150px;
+	height:150px;
+}
+/* 图像 */
+.imgShow {
+	/*margin:3px;
+	border:3px solid #FFF;*/
+	width: 420px;
+	height:420px;
+}
+
+/* 图像 */
+.imgShow_live {
+	/* padding: 50px; */
+	margin: 45px 0px 0px -50px;
+	border:1px solid #000;
+	width: 410px;
+	height: 405px;
+}
+
+.img_small {
+	margin:1px;
+	border:1px solid #000;
+	width: 150px;
+	height:150px;
+	float:left;
+}
+
+
+.box-left{
+	/*border:1px solid #333;*/
+	margin: 60px 0px 0px 150px;
+	float:left;
+	width: 550px;
+	height: 550px;
+	/*background: url('/static/images/frame.png') no-repeat;
+	 background-size:contain; */
+}
+
+.box-live{
+	float:left;
+	width: 550px;
+	height: 550px;
+	margin: 25px 0px 0px 150px;
+	/*background: url('/static/images/frame.png') no-repeat;
+	 background-size:contain; 
+	border:1px solid #333;*/
+}
+
+.box-center{
+	float:left;
+	width: 240px;
+	height:450px;
+	/*margin:15px auto;*/
+	margin:5px 0px 0px 50px;
+}
+
+.box-9x9{
+	/*float:left;*/
+	/*border:1px solid #000;*/
+	margin: 40px 0px 0px 35px;
+	width:430px;
+	height:430px;
+	padding: 5px 5px 5px 10px;
+}
+
+
+/* 拼图区 */
+.box-9g{
+	margin: 55px 5px 5px 55px;
+	width: 450px;
+	height: 450px;
+	border: none;
+}
+
+.box-9x91{
+    padding: 45px 0px 0px 50px;
+	margin: 40px 0px 0px 35px;
+	width:450px;
+	height:450px;
+	padding: 5px 5px 5px 10px;
+}
+
+/* 9宫区块 */
+.box-frame{
+	margin:1px;
+	border:1px solid #000;
+	width: 133px;
+	height:133px;
+	float:left;
+}
+
+
+/* 拼图区高亮块 */
+.hlight{
+	border:1px solid #F00;
+	/*margin:1px;*/
+	width: 130px;
+	height:130px;
+	float:left;
+}
+/* 高亮图 */
+.img_9s {
+	width: 126px;
+	height:126px;
+	border:2px solid #F00;
+}
+
+.box-frame9{
+	/*margin:2px;
+	border:1px solid #000;*/
+	width: 130px;
+	height:130px;
+	float:left;
+}
+
+
+/* 拼图区的图片 */
+.img_9 {
+	/*margin:2px;
+	border:1px solid #2561b4; float:left;*/
+	width: 130px;
+	height:130px;
+}
+
+
+.img_9x9 {
+	margin:2px;
+	/*border:1px solid #2561b4; float:left;*/
+	width: 128px;
+	height:128px;
+}
+
+
+/* 碎片区 */     
+
+.box-fragarea{
+	/*float:left;*/
+	width: 220px;
+	height:430px;
+	margin:5px 5px 0px 100px;
+	border:1px solid #000;
+	padding: 5px 5px 5px 10px;
+	background: #FFF;
+}
+
+/* 碎片图 */
+.img_frag {
+	margin:2px;
+	width: 58px;
+	height:58px;
+	/*float:left;*/
+}
+
+/* 碎片块 */
+.box-frag{
+	margin:2px;
+	border:2px solid #000;
+	width: 62px;
+	height:62px;
+	float:left;
+}
+
+/* 碎片块高亮 */
+.hlight_frag{
+	margin:2px;
+	border:2px solid #F00;
+	width: 62px;
+	height:62px;
+	float:left;
+}
+
+
+.txt_1{font-size:12px;
+}
+
+.qrcode{
+	width: 100px;
+	height:100px;
+	border:1px solid #2561b4;
+	margin-left: 210px;
+}
+
+/* 按键 */
+.bt_user {
+    width: 80px;
+    height:80px;
+    /*border-style: none;*/
+	border-radius:10px;
+	border:2px solid;
+	box-shadow: inset 0px 1px 0px rgba(255,255,255,0.5),0px 1px 3px rgba(0,0,0,0.3);
+}
+
+
+input[type='button']{
+	width:40px;
+	height:40px;
+}
